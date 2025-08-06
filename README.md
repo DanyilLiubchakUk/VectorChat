@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VectorChat
+
+An AI-powered data chat platform that allows users to upload company data files and have intelligent conversations with an AI assistant that can answer questions based on that data.
+
+## Features
+
+- **AI Chat Interface**: Real-time conversations with an AI assistant
+- **Data Management**: Upload and process company data files (.txt)
+- **Vector Database**: Semantic search using Pinecone
+- **Knowledge Base**: Intelligent responses based on uploaded documents
+- **Chat History**: Persistent conversation management
+- **Authentication**: Secure admin access
+- **Responsive Design**: Works on mobile and desktop
+
+## Tech Stack
+
+- **Frontend**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4.1
+- **State Management**: Zustand
+- **AI/ML**: LangChain, HuggingFace models
+- **Vector Database**: Pinecone
+- **Authentication**: Firebase Auth
+- **Database**: Firebase Firestore
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/DanyilLiubchakUk/VectorChat.git
+cd vector-chat
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+4. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── (auth)/          # Authentication pages
+│   ├── (dashboard)/     # Dashboard and chat pages
+│   ├── api/            # API routes
+│   └── globals.css     # Global styles
+├── components/         # Reusable components
+├── lib/               # Utilities and configurations
+├── store/             # State management
+├── types/             # TypeScript type definitions
+└── styles/            # Component styles
+```
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env.local` file with the following variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+FIREBASE_PROJECT_ID=
+FIREBASE_PRIVATE_KEY=
+FIREBASE_CLIENT_EMAIL=
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Pinecone
+PINECONE_API_KEY=
+PINECONE_INDEX_NAME=
 
-## Deploy on Vercel
+# AI/ML
+HUGGINGFACE_API_KEY=
+HUGGINGFACE_MODEL_NAME=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# App Configuration
+NEXT_PUBLIC_APP_NAME=VectorChat
+NEXT_PUBLIC_APP_DESCRIPTION=AI-powered data chat platform
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Development Workflow
+
+This project follows a strict pull request workflow:
+
+### Branch Strategy
+- `main` - Production-ready code
+- `develop` - Integration branch for features
+- `feature/*` - New features (e.g., `feature/chat-interface`)
+- `bugfix/*` - Bug fixes (e.g., `bugfix/auth-error`)
+- `hotfix/*` - Critical production fixes
+
+### Pull Request Process
+1. Create a feature branch from `develop`
+2. Implement your changes with proper commits
+3. Write tests for new functionality
+4. Update documentation if needed
+5. Create a pull request with detailed description
+6. Code review and approval required
+7. Merge to `develop` after approval
+8. Deploy to staging for testing
+9. Merge `develop` to `main` for production
+
+### Commit Convention
+```
+feat: add user authentication
+fix: resolve chat history loading issue
+docs: update API documentation
+style: improve button component styling
+refactor: optimize vector search algorithm
+test: add unit tests for data processing
+chore: update dependencies
+```
+
+## Deployment
+
+This project is optimized for deployment on Vercel:
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Add your environment variables in Vercel dashboard
+4. Deploy!
