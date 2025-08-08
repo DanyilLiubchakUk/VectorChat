@@ -1,1 +1,317 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-background: var(--background);
+    --color-background-hover: var(--background-hover);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-blue-accent: var(--blue-accent);
+    --color-blue-transparent: var(--blue-transparent);
+    --color-blue-transparent-hover: var(--blue-transparent-hover);
+    --color-yellow-accent: var(--yellow-accent);
+    --color-yellow-transparent: var(--yellow-transparent);
+    --color-yellow-transparent-hover: var(--yellow-transparent-hover);
+    --color-green-accent: var(--green-accent);
+    --color-green-transparent: var(--green-transparent);
+    --color-green-transparent-hover: var(--green-transparent-hover);
+    --color-purple-accent: var(--purple-accent);
+    --color-purple-transparent: var(--purple-transparent);
+    --color-purple-transparent-hover: var(--purple-transparent-hover);
+    --color-red-accent: var(--red-accent);
+    --color-red-transparent: var(--red-transparent);
+    --color-red-transparent-hover: var(--red-transparent-hover);
+}
+
+:root {
+    --radius: 0.625rem;
+
+    /* ===== LIGHT THEME COLORS ===== */
+
+    /* Main Background - Pure white for clean, professional look */
+    --background: oklch(1 0 0);
+    /* Background hover - Subtle gray for interactive elements */
+    --background-hover: oklch(0.98 0.002 240);
+
+    /* Primary Text - Deep charcoal for excellent readability */
+    --foreground: oklch(0.12 0.002 240);
+
+    /* Card Background - Slightly off-white for subtle depth */
+    --card: oklch(0.995 0.002 240);
+    --card-foreground: oklch(0.12 0.002 240);
+
+    /* Popover - Same as card for consistency */
+    --popover: oklch(0.995 0.002 240);
+    --popover-foreground: oklch(0.12 0.002 240);
+
+    /* Primary - Deep charcoal for buttons, links, and important actions */
+    --primary: oklch(0.15 0.002 240);
+    --primary-foreground: oklch(0.98 0.002 240);
+
+    /* Secondary - Light gray for secondary buttons and backgrounds */
+    --secondary: oklch(0.96 0.002 240);
+    --secondary-foreground: oklch(0.15 0.002 240);
+
+    /* Muted - Very light gray for subtle backgrounds and disabled states */
+    --muted: oklch(0.97 0.002 240);
+    --muted-foreground: oklch(0.45 0.002 240);
+
+    /* Accent - Blue-neon-not-bright: Professional blue for highlights, focus states, and brand elements */
+    --accent: oklch(0.65 0.18 250);
+    --accent-foreground: oklch(0.98 0.002 240);
+
+    /* Destructive - Professional red for errors, warnings, and delete actions */
+    --destructive: oklch(0.65 0.18 25);
+
+    /* Borders - Subtle gray for clean separation */
+    --border: oklch(0.9 0.002 240);
+    --input: oklch(0.9 0.002 240);
+
+    /* Ring - Blue accent for focus indicators */
+    --ring: oklch(0.65 0.18 250);
+
+    /* Chart Colors - Professional palette for data visualization */
+    --chart-1: oklch(0.65 0.18 250); /* Blue accent */
+    --chart-2: oklch(0.6 0.15 180); /* Teal */
+    --chart-3: oklch(0.55 0.12 220); /* Purple */
+    --chart-4: oklch(0.7 0.15 80); /* Green */
+    --chart-5: oklch(0.65 0.18 25); /* Red */
+
+    /* Sidebar - Slightly different background for navigation */
+    --sidebar: oklch(0.985 0.002 240);
+    --sidebar-foreground: oklch(0.12 0.002 240);
+    --sidebar-primary: oklch(0.65 0.18 250); /* Blue accent */
+    --sidebar-primary-foreground: oklch(0.98 0.002 240);
+    --sidebar-accent: oklch(0.96 0.002 240);
+    --sidebar-accent-foreground: oklch(0.15 0.002 240);
+    --sidebar-border: oklch(0.9 0.002 240);
+    --sidebar-ring: oklch(0.65 0.18 250);
+
+    /* ===== ACCENT COLORS WITH HOVER STATES ===== */
+
+    /* Blue Accent - Main brand color for CTAs, links, and interactive elements */
+    --blue-accent: oklch(0.65 0.18 250);
+    --blue-transparent: color-mix(in oklab, var(--blue-accent) 8%, transparent);
+    --blue-transparent-hover: color-mix(
+        in oklab,
+        var(--blue-accent) 15%,
+        transparent
+    );
+
+    /* Yellow Accent - Warning, notifications, and attention-grabbing elements */
+    --yellow-accent: oklch(0.75 0.15 85);
+    --yellow-transparent: color-mix(
+        in oklab,
+        var(--yellow-accent) 8%,
+        transparent
+    );
+    --yellow-transparent-hover: color-mix(
+        in oklab,
+        var(--yellow-accent) 15%,
+        transparent
+    );
+
+    /* Green Accent - Success states, positive actions, and confirmations */
+    --green-accent: oklch(0.65 0.18 150);
+    --green-transparent: color-mix(
+        in oklab,
+        var(--green-accent) 8%,
+        transparent
+    );
+    --green-transparent-hover: color-mix(
+        in oklab,
+        var(--green-accent) 15%,
+        transparent
+    );
+
+    /* Purple Accent - Premium features, special actions, and secondary brand elements */
+    --purple-accent: oklch(0.6 0.18 280);
+    --purple-transparent: color-mix(
+        in oklab,
+        var(--purple-accent) 8%,
+        transparent
+    );
+    --purple-transparent-hover: color-mix(
+        in oklab,
+        var(--purple-accent) 15%,
+        transparent
+    );
+
+    /* Red Accent - Errors, destructive actions, and critical warnings */
+    --red-accent: oklch(0.65 0.18 25);
+    --red-transparent: color-mix(in oklab, var(--red-accent) 8%, transparent);
+    --red-transparent-hover: color-mix(
+        in oklab,
+        var(--red-accent) 15%,
+        transparent
+    );
+}
+
+.dark {
+    /* ===== DARK THEME COLORS ===== */
+
+    /* Main Background - Deep charcoal for professional dark theme */
+    --background: oklch(0.12 0.002 240);
+    /* Background hover - Slightly lighter for interactive elements */
+    --background-hover: oklch(0.16 0.002 240);
+
+    /* Primary Text - Off-white for excellent readability */
+    --foreground: oklch(0.95 0.002 240);
+
+    /* Card Background - Slightly lighter than main background */
+    --card: oklch(0.15 0.002 240);
+    --card-foreground: oklch(0.95 0.002 240);
+
+    /* Popover - Same as card for consistency */
+    --popover: oklch(0.15 0.002 240);
+    --popover-foreground: oklch(0.95 0.002 240);
+
+    /* Primary - Light gray for buttons and important actions */
+    --primary: oklch(0.9 0.002 240);
+    --primary-foreground: oklch(0.15 0.002 240);
+
+    /* Secondary - Medium gray for secondary elements */
+    --secondary: oklch(0.25 0.002 240);
+    --secondary-foreground: oklch(0.95 0.002 240);
+
+    /* Muted - Dark gray for subtle backgrounds */
+    --muted: oklch(0.25 0.002 240);
+    --muted-foreground: oklch(0.65 0.002 240);
+
+    /* Accent - Brighter blue for better visibility in dark theme */
+    --accent: oklch(0.7 0.18 250);
+    --accent-foreground: oklch(0.95 0.002 240);
+
+    /* Destructive - Brighter red for dark theme */
+    --destructive: oklch(0.7 0.18 25);
+
+    /* Borders - Subtle borders with transparency */
+    --border: oklch(1 0 0 / 12%);
+    --input: oklch(1 0 0 / 15%);
+
+    /* Ring - Blue accent for focus indicators */
+    --ring: oklch(0.7 0.18 250);
+
+    /* Chart Colors - Brighter palette for dark theme */
+    --chart-1: oklch(0.7 0.18 250); /* Blue accent */
+    --chart-2: oklch(0.65 0.15 180); /* Teal */
+    --chart-3: oklch(0.6 0.12 220); /* Purple */
+    --chart-4: oklch(0.75 0.15 80); /* Green */
+    --chart-5: oklch(0.7 0.18 25); /* Red */
+
+    /* Sidebar - Slightly different background for navigation */
+    --sidebar: oklch(0.15 0.002 240);
+    --sidebar-foreground: oklch(0.95 0.002 240);
+    --sidebar-primary: oklch(0.7 0.18 250); /* Blue accent */
+    --sidebar-primary-foreground: oklch(0.95 0.002 240);
+    --sidebar-accent: oklch(0.25 0.002 240);
+    --sidebar-accent-foreground: oklch(0.95 0.002 240);
+    --sidebar-border: oklch(1 0 0 / 12%);
+    --sidebar-ring: oklch(0.7 0.18 250);
+
+    /* ===== ACCENT COLORS WITH HOVER STATES (DARK THEME) ===== */
+
+    /* Blue Accent - Brighter for better visibility in dark theme */
+    --blue-accent: oklch(0.7 0.18 250);
+    --blue-transparent: color-mix(
+        in oklab,
+        var(--blue-accent) 15%,
+        transparent
+    );
+    --blue-transparent-hover: color-mix(
+        in oklab,
+        var(--blue-accent) 25%,
+        transparent
+    );
+
+    /* Yellow Accent - Brighter for dark theme */
+    --yellow-accent: oklch(0.8 0.15 85);
+    --yellow-transparent: color-mix(
+        in oklab,
+        var(--yellow-accent) 15%,
+        transparent
+    );
+    --yellow-transparent-hover: color-mix(
+        in oklab,
+        var(--yellow-accent) 25%,
+        transparent
+    );
+
+    /* Green Accent - Brighter for dark theme */
+    --green-accent: oklch(0.7 0.18 150);
+    --green-transparent: color-mix(
+        in oklab,
+        var(--green-accent) 15%,
+        transparent
+    );
+    --green-transparent-hover: color-mix(
+        in oklab,
+        var(--green-accent) 25%,
+        transparent
+    );
+
+    /* Purple Accent - Brighter for dark theme */
+    --purple-accent: oklch(0.65 0.18 280);
+    --purple-transparent: color-mix(
+        in oklab,
+        var(--purple-accent) 15%,
+        transparent
+    );
+    --purple-transparent-hover: color-mix(
+        in oklab,
+        var(--purple-accent) 25%,
+        transparent
+    );
+
+    /* Red Accent - Brighter for dark theme */
+    --red-accent: oklch(0.7 0.18 25);
+    --red-transparent: color-mix(in oklab, var(--red-accent) 15%, transparent);
+    --red-transparent-hover: color-mix(
+        in oklab,
+        var(--red-accent) 25%,
+        transparent
+    );
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
