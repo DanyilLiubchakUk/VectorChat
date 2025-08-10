@@ -23,12 +23,16 @@ export const metadata: Metadata = {
         description:
             "AI-powered data chat platform for intelligent conversations with company data",
         type: "website",
+        images: [
+            { url: "/og.png", width: 1200, height: 630, alt: "VectorChat" },
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "VectorChat - AI-powered data chat platform",
         description:
             "AI-powered data chat platform for intelligent conversations with company data",
+        images: ["/og.png"],
     },
     robots: {
         index: true,
@@ -41,15 +45,23 @@ export const metadata: Metadata = {
             "max-video-preview": -1,
         },
     },
-};
-
-export const viewport: Viewport = {
-    width: "device-width",
-    initialScale: 1,
-    themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-        { media: "(prefers-color-scheme: dark)", color: "#0b0b0b" },
-    ],
+    icons: {
+        icon: [
+            { url: "/favicon.ico", sizes: "any" },
+            { url: "/favicon.svg", type: "image/svg+xml" },
+        ],
+        apple: "/apple-touch-icon.png",
+        other: [{ rel: "mask-icon", url: "/favicon.svg", color: "#3B82F6" }],
+    },
+    manifest: "/site.webmanifest",
+    colorScheme: "dark",
+    themeColor: "#3B82F6",
+    viewport: {
+        width: "device-width",
+        initialScale: 1,
+        maximumScale: 1,
+        userScalable: false,
+    },
 };
 
 export default function RootLayout({

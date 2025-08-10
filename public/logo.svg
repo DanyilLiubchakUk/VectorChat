@@ -1,0 +1,22 @@
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+ <title id="title">VectorChat Logo</title>
+
+ <desc id="desc">A clean chat bubble outline with vector-graph forming a V to represent AI data chat.</desc>
+ <g>
+  <title>Layer 1</title>
+  <path stroke="#4c4c4c" d="m113.48731,176.17143l-27.34783,40.1529l0,-40.1529" stroke-width="18" id="svg_9" fill="#ffffff"/>
+  <path stroke="#4c4c4c" stroke-width="18" opacity="undefined" d="m34.35815,66.72461c0,-14.5455 12.48759,-26.76861 27.34783,-26.76861l132.83232,0c14.86025,0 27.34783,12.22311 27.34783,26.76861l0,84.1299c0,14.5455 -12.48758,26.76861 -27.34783,26.76861l-132.83232,0c-14.86023,0 -27.34783,-12.22311 -27.34783,-26.76861l0,-84.1299z" id="svg_8" fill="#ffffff"/>
+  <path stroke="#ffffff" stroke-width="12" opacity="undefined" d="m34.55056,66.9451c0,-14.5455 12.48759,-26.76861 27.34783,-26.76861l132.83232,0c14.86023,0 27.34783,12.2231 27.34783,26.76861l0,84.1299c0,14.5455 -12.48759,26.76861 -27.34783,26.76861l-132.83232,0c-14.86023,0 -27.34783,-12.2231 -27.34783,-26.76861l0,-84.1299z" id="svg_2" fill="#333333"/>
+  <path stroke="#ffffff" d="m113.48731,176.53671l-27.34783,40.1529l0,-40.1529" stroke-width="12" id="svg_3" fill="#333333"/>
+  <path stroke="#ffffff" d="m80.90828,88.1925l41.03339,41.04809l41.03339,-57.46733" stroke-width="10" id="svg_4" fill="#333333"/>
+  <circle stroke="null" cx="83.52835" cy="87.7435" r="14.42299" fill="#ffffff" id="svg_5"/>
+  <circle stroke="null" cx="160.56746" cy="70.97577" r="12.83761" fill="#ffffff" id="svg_6"/>
+  <line stroke="#ffffff" fill="none" stroke-width="6" x1="82.06333" y1="95.8169" x2="81.59776" y2="172.51436" id="svg_11" stroke-dasharray="5,5"/>
+  <line stroke="#ffffff" fill="none" stroke-width="6" x1="162.72226" y1="76.08634" x2="162.25669" y2="172.32943" id="svg_13" stroke-dasharray="5,5"/>
+  <circle stroke="null" cx="129.23305" cy="153.3392" r="16" fill="#ffffff" id="svg_7" transform="matrix(-1.12688 0 0 -1.10301 268.493 294.402)"/>
+  <line fill="none" stroke-width="6" x1="164.76654" y1="67.88959" x2="86.22189" y2="86.78298" id="svg_1" stroke-dasharray="5,5" stroke="#ffffff"/>
+  <rect stroke="#ffffff" fill="#333333" stroke-width="0" x="92.14205" y="167.65841" width="11.24727" height="10.22136" id="svg_10"/>
+  <rect stroke="#ffffff" fill="#333333" stroke-width="0" x="77.54015" y="155.35462" width="9.66321" height="4.77318" id="svg_15" transform="matrix(0.667601 -0.953433 0.953433 0.667601 -99.9131 146.019)"/>
+  <rect stroke="#ffffff" fill="#ffffff" stroke-width="0" x="80.85698" y="171.96956" width="11.24727" height="10.22136" id="svg_12"/>
+ </g>
+</svg>
