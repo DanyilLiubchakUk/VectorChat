@@ -23,6 +23,7 @@
     "react-resizable-panels": "^3.0.4",
     "react-responsive": "^10.0.1",
     "reshaped": "^3.6.3",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "zustand": "^5.0.7"

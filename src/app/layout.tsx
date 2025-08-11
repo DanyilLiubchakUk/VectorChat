@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SettingsButton } from "@/components/settings";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -82,6 +83,7 @@ export default function RootLayout({
                     <SettingsButton />
                     {children}
                 </ThemeProvider>
+                <Toaster richColors />
             </body>
         </html>
     );
