@@ -55,14 +55,15 @@ export const metadata: Metadata = {
         other: [{ rel: "mask-icon", url: "/favicon.svg", color: "#3B82F6" }],
     },
     manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
     colorScheme: "dark",
     themeColor: "#3B82F6",
-    viewport: {
-        width: "device-width",
-        initialScale: 1,
-        maximumScale: 1,
-        userScalable: false,
-    },
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
 };
 
 export default function RootLayout({
