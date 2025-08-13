@@ -6,13 +6,13 @@ type MediaQueryListLegacy = MediaQueryList & {
 };
 
 export function useIsDesktop(): boolean {
-  const [isDesktop, setIsDesktop] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(min-width: 640px)").matches;
-  });
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
+    setMounted(true);
     if (typeof window === "undefined") return;
+    
     const mq: MediaQueryListLegacy = window.matchMedia("(min-width: 640px)");
 
     const onChange = (e: MediaQueryListEvent) => {
@@ -37,5 +37,5 @@ export function useIsDesktop(): boolean {
     };
   }, []);
 
-  return isDesktop;
+  return mounted ? isDesktop : false;
 }
