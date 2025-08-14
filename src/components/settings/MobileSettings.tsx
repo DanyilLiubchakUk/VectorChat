@@ -1,9 +1,19 @@
 "use client";
 
-import { Monitor, Palette, Settings, Sun, Moon } from "lucide-react";
+import {
+    Monitor,
+    Palette,
+    Settings,
+    Sun,
+    Moon,
+    LogIn,
+    LogOut,
+    UserPlus,
+} from "lucide-react";
 import { useRef } from "react";
 import { useOnClickOutside } from "reshaped";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export type ThemeKind = "light" | "dark" | "system";
 
@@ -38,6 +48,8 @@ export function MobileSettingsPanel({
     theme,
     resolvedTheme,
     setTheme,
+    isAuthenticated,
+    onSignOut,
 }: {
     id?: string;
     open: boolean;
@@ -45,6 +57,8 @@ export function MobileSettingsPanel({
     theme: ThemeKind;
     resolvedTheme: "light" | "dark";
     setTheme: (t: ThemeKind) => void;
+    isAuthenticated: boolean;
+    onSignOut: () => void;
 }) {
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -67,6 +81,58 @@ export function MobileSettingsPanel({
             aria-modal="true"
             aria-labelledby={`${id}-title`}
         >
+            {!isAuthenticated ? (
+                <div className="flex flex-col gap-1.5 pb-2">
+                    <Button
+                        asChild
+                        tabIndex={open ? 0 : -1}
+                        className="bg-background hover:bg-green-transparent transition-colors duration-200 focus-visible:bg-green-transparent focus-visible:ring-2 focus-visible:ring-green-accent/50"
+                    >
+                        <Link
+                            href="/signin"
+                            className="flex items-center w-full"
+                            onClick={onClose}
+                        >
+                            <LogIn className="mr-3 h-4 w-4 text-green-accent" />
+                            <span className="font-medium mr-auto text-foreground">
+                                Sign in
+                            </span>
+                        </Link>
+                    </Button>
+                    <Button
+                        asChild
+                        tabIndex={open ? 0 : -1}
+                        className="bg-background hover:bg-yellow-transparent transition-colors duration-200 focus-visible:bg-yellow-transparent focus-visible:ring-2 focus-visible:ring-yellow-accent/50"
+                    >
+                        <Link
+                            href="/signup"
+                            className="flex items-center w-full"
+                            onClick={onClose}
+                        >
+                            <UserPlus className="mr-3 h-4 w-4 text-yellow-accent" />
+                            <span className="font-medium mr-auto text-foreground">
+                                Sign up
+                            </span>
+                        </Link>
+                    </Button>
+                </div>
+            ) : (
+                <div className="flex flex-col gap-1.5 pb-2">
+                    <Button
+                        tabIndex={open ? 0 : -1}
+                        onClick={() => {
+                            onSignOut();
+                            onClose();
+                        }}
+                        className="bg-background hover:bg-red-transparent transition-colors duration-200 focus-visible:bg-red-transparent focus-visible:ring-2 focus-visible:ring-red-accent/50"
+                    >
+                        <LogOut className="mr-3 h-4 w-4 text-red-accent" />
+                        <span className="font-medium mr-auto text-foreground">
+                            Sign out
+                        </span>
+                    </Button>
+                </div>
+            )}
             <div className="flex items-center px-2 py-1.5">
                 <Palette
                     className="mr-3 h-4 w-4 text-purple-accent"

@@ -1,6 +1,15 @@
 "use client";
 
-import { Moon, Sun, Monitor, Settings, Palette } from "lucide-react";
+import {
+    Moon,
+    Sun,
+    Monitor,
+    Settings,
+    Palette,
+    LogIn,
+    UserPlus,
+    LogOut,
+} from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -12,6 +21,7 @@ import {
     DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export type ThemeKind = "light" | "dark" | "system";
 
@@ -23,6 +33,8 @@ export function DesktopSettings({
     setTheme,
     theme,
     resolvedTheme,
+    isAuthenticated,
+    onSignOut,
 }: {
     open: boolean;
     onOpenChange: (open: boolean) => void;
@@ -31,6 +43,8 @@ export function DesktopSettings({
     setTheme: (t: ThemeKind) => void;
     theme: ThemeKind;
     resolvedTheme: "light" | "dark";
+    isAuthenticated: boolean;
+    onSignOut: () => void;
 }) {
     return (
         <DropdownMenu open={open} onOpenChange={onOpenChange}>
@@ -53,6 +67,51 @@ export function DesktopSettings({
                     sideOffset={8}
                     className="w-56 bg-sidebar backdrop-blur-md border border-border/60 shadow-xl rounded-xl z-[60]"
                 >
+                    {!isAuthenticated ? (
+                        <>
+                            <DropdownMenuItem
+                                className="hover:bg-green-transparent transition-colors duration-200 focus-visible:bg-green-transparent focus-visible:ring-2 focus-visible:ring-green-accent/50 cursor-pointer"
+                                onClick={() => onOpenChange(false)}
+                            >
+                                <Link
+                                    href="/signin"
+                                    className="flex items-center w-full"
+                                >
+                                    <LogIn className="mr-3 h-4 w-4 text-green-accent" />
+                                    <span className="font-medium text-foreground">
+                                        Sign in
+                                    </span>
+                                </Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                                className="hover:bg-yellow-transparent transition-colors duration-200 focus-visible:bg-yellow-transparent focus-visible:ring-2 focus-visible:ring-yellow-accent/50 cursor-pointer"
+                                onClick={() => onOpenChange(false)}
+                            >
+                                <Link
+                                    href="/signup"
+                                    className="flex items-center w-full"
+                                >
+                                    <UserPlus className="mr-3 h-4 w-4 text-yellow-accent" />
+                                    <span className="font-medium text-foreground">
+                                        Sign up
+                                    </span>
+                                </Link>
+                            </DropdownMenuItem>
+                        </>
+                    ) : (
+                        <DropdownMenuItem
+                            onClick={() => {
+                                onSignOut();
+                                onOpenChange(false);
+                            }}
+                            className="hover:bg-red-transparent transition-colors duration-200 focus-visible:bg-red-transparent focus-visible:ring-2 focus-visible:ring-red-accent/50 cursor-pointer"
+                        >
+                            <LogOut className="mr-3 h-4 w-4 text-red-accent" />
+                            <span className="font-medium text-foreground">
+                                Sign out
+                            </span>
+                        </DropdownMenuItem>
+                    )}
                     <DropdownMenuSub>
                         <DropdownMenuSubTrigger className="hover:bg-background-hover transition-colors duration-200 focus-visible:bg-background-hover focus-visible:ring-2 focus-visible:ring-blue-accent/50">
                             <Palette className="mr-3 h-4 w-4 text-purple-accent" />

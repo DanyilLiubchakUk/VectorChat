@@ -10,6 +10,7 @@ import {
     MobileSettingsPanel,
     MobileSettingsTrigger,
 } from "@/components/settings/MobileSettings";
+import { useAuth } from "@/hooks/useAuth";
 
 export function SettingsButton() {
     const [mounted, setMounted] = useState(false);
@@ -26,6 +27,7 @@ export function SettingsButton() {
         setTheme,
         getCurrentThemeText,
     } = useSettingsWindow();
+    const { isAuthenticated, signOut } = useAuth();
 
     useEffect(() => setMounted(true), []);
 
@@ -77,6 +79,8 @@ export function SettingsButton() {
             setTheme={setTheme}
             theme={theme}
             resolvedTheme={resolvedTheme}
+            isAuthenticated={isAuthenticated}
+            onSignOut={signOut}
         />
     ) : (
         <>
@@ -90,6 +94,8 @@ export function SettingsButton() {
                 theme={theme}
                 resolvedTheme={resolvedTheme}
                 setTheme={setTheme}
+                isAuthenticated={isAuthenticated}
+                onSignOut={signOut}
             />
         </>
     );
